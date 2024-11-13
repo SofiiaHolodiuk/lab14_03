@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4.3</title>
+</head>
+<body>
+
+    <script>
+        // Створення одновимірного масиву з 15 випадкових чисел
+        let arr = [];
+        for (let i = 0; i < 15; i++) {
+            arr[i] = Math.floor(Math.random() * 100) - 50; // випадкове число від -50 до 49
+        }
+        document.write("Початковий масив: " + arr.join(" ") + "<br>");
+
+        // Задане значення B для порівняння
+        let B = 20;
+
+        // Знаходимо середнє арифметичне додатних чисел на непарних місцях
+        let positiveSum = 0;
+        let positiveCount = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > 0 && i % 2 === 0) { // непарні місця мають індексацію 0, 2, 4...
+                positiveSum += arr[i];
+                positiveCount++;
+            }
+        }
+
+        let averagePositive = positiveCount > 0 ? positiveSum / positiveCount : 0;
+
+        // Підрахунок кількості чисел, менших за B
+        let lessThanB = arr.filter(num => num < B).length;
+
+        // Виведення результатів
+        document.write("Середнє арифметичне додатних чисел на непарних місцях: " + averagePositive + "<br>");
+        document.write("Кількість чисел, менших за " + B + ": " + lessThanB);
+    </script>
+
+</body>
+</html>
